@@ -1,4 +1,4 @@
-
+javascript
 document.addEventListener("DOMContentLoaded", function() {
     const typedText = document.getElementById('typed-text');
     let letterIndex = 0;
