@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apariencia Letra por Letra</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+        }
+        .jazz-typewriter {
+            display: flex;
+            justify-content: center;
+        }
+        .container div {
+            margin-left: 15px; /* ajuste según tus necesidades */
+            width: 20px; /* ajusta al tamaño de la letra que deseas simular */
+            animation-name: typing, blink-caret;
+            animation-duration: 1s, 0.5s;
+            animation-iteration-count: 2, infinite;
+        }
+        .typing {
+            animation-delay: 0.1s;
+            animation-fill-mode: both;
+        }
+        .blink-caret::after {
+            content: '\E007';
+            position: relative;
+            display: inline-block;
+            font-family: 'Blinker', 'Alan-Alpha', cursive;
+        }
+    </style>
+</head>
+<body>
+    <div class="jazz-typewriter">
+        <div id="jazz-typewriter">P</div>
+        <div id="jazz-typewriter">r</div>
+        <div id="jazz-typewriter">v</div>
+        <div id="jazz-typewriter">e</div>
+        <div id="jazz-typewriter">a</div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(window).load(function() {
+            $("#jazz-typewriter").each(function(index) {
+                let element = $(this);
+                let text = element.text();
+                if (text.length > 1 && index === 0) {
+                    setTimeout(function() { element.text('...'); }, index * 500); // Cada letra oculta después de 0.5 segundos
+                } else {
+                    $(this).delay(index * 400 + Math.floor(Math.random() * 200)).animate({
+                        'width': '+=1px',
+                        'letter-spacing': '-=0.6em'
+                    }, function() {
+                        if (element.text().length === text.length) $(this).css('background', '');
+                    });
+                }
+            }).delay(400);
+        });
+    </script>
+</body>
+</html>
