@@ -1,0 +1,41 @@
+/* Estilos generales */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #F4F4F4; /* Fondo suave */
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    text-align: center;
+}
+
+#typed-text {
+    font-size: 3rem; /* Tamaño grande de la letra */
+    letter-spacing: 5px; /* Espaciado entre letras */
+    color: #1A237E; /* Color azul oscuro para un aspecto profesional */
+}
+
+
+### JavaScript (script.js)
+javascript
+document.addEventListener("DOMContentLoaded", function() {
+    const typedText = document.getElementById('typed-text');
+    let letterIndex = 0;
+    
+    const textToType = "Prueba API X modo programación";
+    
+    function typeWriter() {
+        if(letterIndex < textToType.length) {
+            typedText.textContent += textToType.charAt(letterIndex);
+            letterIndex++;
+            setTimeout(typeWriter, 150); // Tiempo entre cada letra (ms)
+        }
+    }
+
+    typeWriter();
+});
+
